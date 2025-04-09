@@ -15,6 +15,8 @@ import FormDev from '../materials/Form/dev';
 import FormProd from '../materials/Form/prod';
 import FormItemDev from '../materials/FormItem/dev';
 import FormItemProd from '../materials/FormItem/prod';
+import TextDev from '../materials/Text/dev';
+import TextProd from '../materials/Text/prod';
 
 export interface ComponentSetter {
     name: string;
@@ -66,6 +68,41 @@ export const useComponentConfigStore = create<State & Action>((set, get) => {
             desc: '容器',
             dev: ContainerDev,
             prod: ContainerProd
+        },
+        Text: {
+            name: 'Text',
+            defaultProps: {
+                text: '文本内容',
+                strong: false,
+                underline: false
+            },
+            setter: [
+                {
+                    name: 'text',
+                    label: '文本内容',
+                    type: 'input'
+                },
+                {
+                    name: 'strong',
+                    label: '加粗',
+                    type: 'switch'
+                },
+                {
+                    name: 'underline',
+                    label: '下划线',
+                    type: 'switch'
+                }
+            ],
+            stylesSetter: [
+                {
+                    name: 'fontSize',
+                    label: '字体大小',
+                    type: 'inputNumber'
+                }
+            ],
+            desc: '文本组件',
+            dev: TextDev,
+            prod: TextProd
         },
         Button: {
             name: 'Button',

@@ -1,29 +1,29 @@
-import { Form, Input, Select } from 'antd';
+import { Form, Input, Select, Switch } from 'antd';
 import { useEffect } from 'react';
 import { ComponentConfig, ComponentSetter, useComponentConfigStore } from '../../stores/component-config';
 import { useComponetsStore } from '../../stores/components';
 
 export function ComponentAttr() {
-
   const [form] = Form.useForm();
-
   const { curComponentId, curComponent, updateComponentProps } = useComponetsStore();
   const { componentConfig } = useComponentConfigStore();
 
   useEffect(() => {
     const data = form.getFieldsValue();
-    form.setFieldsValue({...data, ...curComponent?.props});
-  }, [curComponent])
+    form.setFieldsValue({ ...data, ...curComponent?.props });
+  }, [curComponent]);
 
   if (!curComponentId || !curComponent) return null;
-  
+
   function renderFormElememt(setting: ComponentSetter) {
     const { type, options } = setting;
-  
+
     if (type === 'select') {
-      return <Select options={options} />
+      return <Select options={options} />;
     } else if (type === 'input') {
-      return <Input />
+      return <Input />;
+    } else if (type === 'switch') {
+      return <Switch />;
     }
   }
 
@@ -47,15 +47,13 @@ export function ComponentAttr() {
         <Input value={curComponent.name} disabled />
       </Form.Item>
       <Form.Item label="组件描述">
-        <Input value={curComponent.desc} disabled/>
+        <Input value={curComponent.desc} disabled />
       </Form.Item>
-      {
-        componentConfig[curComponent.name]?.setter?.map(setter => (
-          <Form.Item key={setter.name} name={setter.name} label={setter.label}>
-            {renderFormElememt(setter)}
-          </Form.Item>
-        ))
-      }
+      {componentConfig[curComponent.name]?.setter?.map((setter) => (
+        <Form.Item key={setter.name} name={setter.name} label={setter.label}>
+          {renderFormElememt(setter)}
+        </Form.Item>
+      ))}
     </Form>
-  )
+  );
 }
