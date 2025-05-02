@@ -5,7 +5,7 @@ import { ComponentAttr } from './ComponentAttr';
 import { ComponentEvent } from './ComponentEvent';
 import { ComponentStyle } from './ComponentStyle';
 
-export function Setting() {
+export default function Setting() {
 
     const { curComponentId } = useComponetsStore();
 

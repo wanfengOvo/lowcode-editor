@@ -1,5 +1,5 @@
-
 import { useDrag } from "react-dnd";
+import { useComponentConfigStore } from "../../stores/component-config";
 
 export interface MaterialItemProps {
     name: string
@@ -7,7 +7,7 @@ export interface MaterialItemProps {
 }
 
 export function MaterialItem(props: MaterialItemProps) {
-
+    const { componentConfig } = useComponentConfigStore();
     const {
         name,
         desc
@@ -19,6 +19,8 @@ export function MaterialItem(props: MaterialItemProps) {
             type: name
         }
     });
+
+    const icon = componentConfig[name]?.icon;
 
     return <div
         ref={drag}
@@ -37,10 +39,12 @@ export function MaterialItem(props: MaterialItemProps) {
             text-gray-700
             flex
             items-center
-            justify-center
+            gap-2
             h-10
+            px-3
         '
     >
+        {icon && <span className="text-base">{icon}</span>}
         {desc}
     </div>
 }
