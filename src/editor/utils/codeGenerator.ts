@@ -1,4 +1,3 @@
-// utils/codeGenerator.ts (或者放在你的 Source 组件内部)
 
 import { Component } from '../stores/components';
 import { ComponentConfig } from '../stores/component-config';

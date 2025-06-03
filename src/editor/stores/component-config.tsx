@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import React from 'react';
 import { componentConfigs } from '../config/componentConfigs';
 
-import ButtonIcon from '../../assets/icons/button.svg'
+
 import {
     ContainerOutlined,
     FontSizeOutlined,
@@ -59,7 +59,7 @@ interface Action {
 const iconMap = {
     Container: <ContainerOutlined className="text-blue-500" />,
     Text: <FontSizeOutlined className="text-blue-500" />,
-    Button: <img src={ButtonIcon} alt="Button Icon" className="text-blue-500" />,
+    Button: <FileTextOutlined className="text-blue-500" />,
     Modal: <AppstoreOutlined className="text-blue-500" />,
     Table: <TableOutlined className="text-blue-500" />,
     TableColumn: <ColumnHeightOutlined className="text-blue-500" />,
